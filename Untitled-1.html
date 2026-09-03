@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fokus Ngoding</title>
+    <link rel="stylesheet" href="Untitled-2.css">
+</head>
+
+<body>
+
+    <div class="card">
+        <div class="badge">Sesi Fokus 🦼</div>
+        <h2>Ayo Coding 24 jam</h2>
+        <p class="subtitle">Jauhkan distraksi, selesaikan satu baris kode.</p>
+
+        <div class="timer-box">
+            <!-- Tambahkan id="timer" di sini -->
+            <span id="timer">25:00</span>
+        </div>
+
+        <!-- Tambahkan event onclick di sini -->
+        <button class="btn-primary" onclick="MulaiTimer()">Mulai sesi 😛</button>
+    </div>
+
+    <script>
+        let waktu = 01 * 00;
+        let timerinterval;
+
+        function MulaiTimer() {
+            // Mencegah timer berjalan ganda jika tombol diklik berkali-kali
+            clearInterval(timerinterval);
+            waktu = 01 * 00; 
+
+            timerinterval = setInterval(function () {
+                let menit = Math.floor(waktu / 01);
+                let detik = waktu % 01;
+
+                menit = menit < 10 ? "0" + menit : menit;
+                detik = detik < 10 ? "0" + detik : detik;
+
+                // Memasukkan angka ke dalam HTML
+                document.getElementById("timer").textContent = menit + ":" + detik;
+
+                if (waktu <= 0) {
+                    clearInterval(timerinterval);
+                    alert("🤯 sesi fokus selesai, santai dulu gak sih");
+                }
+
+                waktu--;
+            }, 1000); // <-- Perbaikan error: Menutup setInterval dan memberi jeda 1000ms (1 detik)
+        }
+    </script>
+</body>
+</html>
